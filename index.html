@@ -92,6 +92,10 @@
 <section class="members" id="members">
   <h2>আমাদের সদস্যবৃন্দ</h2>
   <p class="member-note">বর্তমানে আমাদের ১০+ জন সক্রিয় সদস্য রয়েছে।</p>
+  <div class="member-search">
+  <input type="text" id="memberSearch" placeholder="🔍 সদস্যের নাম লিখুন...">
+</div>
+
   <div class="member-grid">
     <!-- Example member cards -->
     <div class="member-card">
@@ -202,9 +206,42 @@
         <a href="#"><i data-lucide="phone"></i></a>
       </div>
     </div>
+    <div class="member-card new-member">
+  <span class="badge-new">NEW</span>
+
+  <div class="member-img">
+    <img src="./images/rofiq.jpeg" alt="">
+  </div>
+
+  <span>Member Name</span>
+  <h4>Rofiqul</h4>
+
+  <div class="member-social">
+    <a href="https://www.facebook.com/profile.php?id=100095092821252"><i data-lucide="facebook"></i></a>
+    <a href="#"><i data-lucide="phone"></i></a>
+  </div>
+</div>
+
+  <div class="member-card new-member">
+  <span class="badge-new">NEW</span>
+
+  <div class="member-img">
+    <img src="./images/abid.jpeg" alt="">
+  </div>
+
+  <span>Member Name</span>
+  <h4>Abid</h4>
+
+  <div class="member-social">
+    <a href="https://www.facebook.com/profile.php?id=61585870340300"><i data-lucide="facebook"></i></a>
+    <a href="#"><i data-lucide="phone"></i></a>
+  </div>
+</div>
+
+
   </div>
 </section>
-
+https://www.facebook.com/profile.php?id=61585870340300
 <section class="team-section" id="team">
   <h2>দায়িত্বশীল টিম</h2>
   <p class="team-subtitle">
@@ -312,6 +349,73 @@
   </div>
 </div>
 
+<!-- ================= MEMBERS SECTION (PRIVATE) ================= -->
+<!-- ================= PRIVATE MEMBERS SECTION ================= -->
+<section id="membersSection" class="members-section">
+
+  <!-- Password Screen -->
+  <section id="membersSection" class="members-section">
+
+  <!-- 🔐 LOGIN SCREEN -->
+  <div id="passwordScreen" class="password-screen">
+    <h2>🔒 Members Only</h2>
+    <p>এই অংশটি শুধু সদস্যদের জন্য</p>
+
+    <input type="password" id="memberPassword" placeholder="পাসওয়ার্ড দিন">
+    <button id="unlockBtn">Login</button>
+
+    <p id="passError" class="error-text"></p>
+  </div>
+
+  <!-- 📊 DASHBOARD -->
+  <div id="dashboard" class="dashboard">
+
+    <h1>Serve Society – Members Dashboard</h1>
+
+    <!-- FUND SUMMARY -->
+    <div class="card">
+      <h3>💰 মাসিক ফান্ড সারাংশ</h3>
+
+      <div class="fund-box">
+        <div>🎯 Target: <strong>5,000৳</strong></div>
+        <div>💰 Collected: <strong id="totalCollected">0৳</strong></div>
+        <div>⏳ Due: <strong id="totalDue">0৳</strong></div>
+      </div>
+    </div>
+
+    <!-- MEMBERS TABLE -->
+    <div class="card">
+      <h3>👥 সদস্যদের স্ট্যাটাস</h3>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>নাম</th>
+              <th>মাস</th>
+              <th>স্ট্যাটাস</th>
+            </tr>
+          </thead>
+          <tbody id="membersTable">
+            <!-- JS থেকে load হবে -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- NOTICE -->
+    <div class="card">
+      <h3>📢 নোটিশ ও প্রোগ্রাম</h3>
+      <ul>
+        <li>🕌 মাসিক মিটিং – ....</li>
+        <li>🌙 রমজান ফান্ড প্ল্যানিং</li>
+        <li>📦 দান কার্যক্রম – সামনে</li>
+      </ul>
+    </div>
+
+  </div>
+
+</section>
 
 
 <!-- ================= CONTACT ================= -->
@@ -321,6 +425,9 @@
   <p>📧 ইমেইল: servesociety@email.com</p>
   <p>📍 এলাকা: দক্ষিণ কানাইপুর</p>
 </section>
+
+
+
 
 <footer>
   © 2026 Serve Society (SS) — Serving Humanity with Heart

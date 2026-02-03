@@ -75,3 +75,97 @@ ${reason}
   }
 
 });
+
+
+// 🔐 Members Password
+const PASSWORD = "ss12026";
+
+// 🔹 Login
+document.getElementById("unlockBtn").addEventListener("click", () => {
+  const input = document.getElementById("memberPassword").value;
+  const error = document.getElementById("passError");
+
+  if (input === PASSWORD) {
+    document.getElementById("passwordScreen").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+    loadMembers();
+    window.scrollTo({top: document.getElementById("membersSection").offsetTop, behavior:'smooth'});
+  } else {
+    error.textContent = "❌ ভুল পাসওয়ার্ড";
+  }
+});
+
+// 🔹 Members List
+const members = [
+  { name: "Arif", month: "january", assigned: 500, paidAmount: 500 },
+  { name: "Asif", month: "january", assigned: 500, paidAmount: 500 },
+  { name: "Shoriful", month: "january", assigned: 300, paidAmount: 300 },
+  { name: "Imran", month: "january", assigned: 100, paidAmount: 100 },
+  { name: "Bayzid", month: "january", assigned: 300, paidAmount: 300 },
+  { name: "Babu", month: "january", assigned: 200, paidAmount: 200 },
+  { name: "Ashik", month: "january", assigned: 1000, paidAmount: 1100 },
+  { name: "Sayful", month: "january", assigned: 500, paidAmount: 510 },
+  { name: "Sabbir", month: "january", assigned: 500, paidAmount: 510 },
+  { name: "Tamim", month: "january", assigned: 200, paidAmount: 200 },
+  { name: "Shamim", month: "january", assigned: 200, paidAmount: 200 },
+  { name: "Emon", month: "january", assigned: 500, paidAmount: 0 },
+];
+
+function loadMembers() {
+  const table = document.getElementById("membersTable");
+  table.innerHTML = "";
+
+  let totalCollected = 0;
+  let totalDue = 0;
+
+  members.forEach(m => {
+    // 🔹 Status calculation
+    const isPaid = m.paidAmount >= m.assigned;
+
+    // 🔹 Totals calculation
+    totalCollected += m.paidAmount;
+
+    if (!isPaid) {
+      totalDue += (m.assigned - m.paidAmount);
+    }
+
+    // 🔹 Table row (NO AMOUNT SHOWN)
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${m.name}</td>
+      <td>${m.month}</td>
+      <td>
+        <span class="badge ${isPaid ? "paid" : "due"}">
+          ${isPaid ? "PAID" : "DUE"}
+        </span>
+      </td>
+    `;
+    table.appendChild(tr);
+  });
+
+  // 🔹 Final totals (visible to all)
+  document.getElementById("totalCollected").innerText = totalCollected + "৳";
+  document.getElementById("totalDue").innerText = totalDue + "৳";
+}
+
+
+
+// ==========================
+
+const searchInput = document.getElementById("memberSearch");
+const memberCards = document.querySelectorAll(".member-card");
+
+searchInput.addEventListener("input", function () {
+  const value = this.value.toLowerCase();
+
+  memberCards.forEach(card => {
+    const name = card.querySelector("h4").innerText.toLowerCase();
+
+    if (name.includes(value)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+});
+
