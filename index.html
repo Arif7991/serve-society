@@ -3,10 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Serve Society (SS)</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+   <title>Serve Society</title>
+  <link rel="shortcut icon" href="./images/fav.jpeg" type="image/x-icon">
+  <!-- Font Awesome 6 (CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Font: Inter (modern, readable) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+  <!-- SheetJS & jsPDF for report download -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
@@ -15,423 +20,285 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-
-<!-- ================= NAVBAR ================= -->
-<nav class="navbar">
-  <div class="logo">Serve Society</div>
-  <ul class="nav-links">
-    <li><a href="#home">হোম</a></li>
-    <li><a href="#about">আমাদের সম্পর্কে</a></li>
-    <li><a href="#activities">আমাদের কার্যক্রম</a></li>
-    <li><a href="#members">সদস্যবৃন্দ</a></li>
-    <li><a href="#join">যুক্ত হোন</a></li>
-    <li><a href="#contact">যোগাযোগ</a></li>
-  </ul>
-  <a href="#join" class="btn-nav">স্বেচ্ছাসেবক হোন</a>
-</nav>
-
-<!-- ================= HERO SLIDER ================= -->
-<section class="hero-slider" id="home">
-  <div class="slides">
-    <div class="slide active" style="background-image:url('./images/slider/slider1.jpg')"></div>
-    <div class="slide" style="background-image:url('./images/slider/slider2.jpg')"></div>
-    <div class="slide" style="background-image:url('./images/slider/slider3.jpg')"></div>
-  </div>
-
-  <div class="hero-content">
-    <h1>Serve Society (SS)<br>মানবতার সেবায় একসাথে</h1>
-    <p>একটি সুন্দর, পরিবারভিত্তিক ও নৈতিক সমাজ গড়াই আমাদের লক্ষ্য। যেখানে মানুষ মানুষকে ভালোবাসবে এবং সমাজ হবে শান্তির জায়গা।</p>
-    <div class="hero-buttons">
-      <a href="#activities" class="btn-primary">আমাদের কার্যক্রম</a>
-      <a href="#join" class="btn-outline">যুক্ত হোন</a>
+<!-- মেনু -->
+  <div class="navbar">
+    <div class="logo">Serve Society</div>
+    <ul class="nav-links">
+      <li><a href="#home">হোম</a></li>
+      <li><a href="#about">পরিচিতি</a></li>
+      <li><a href="#mission">লক্ষ্য ও স্বপ্ন</a></li>
+      <li><a href="#policy">আর্থিক নীতি</a></li>
+      <li><a href="#members">সদস্যবৃন্দ</a></li>
+      <li><a href="#management">ব্যবস্থাপনা</a></li>
+      <li><a href="#join">যোগদান</a></li>
+      <li><a href="#contact">যোগাযোগ</a></li>
+    </ul>
+    <div class="right-actions">
+      <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+      <button class="user-icon" id="memberIcon"><i class="fas fa-user-lock"></i></button>
+      <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home">হোম</a><a href="#about">পরিচিতি</a><a href="#mission">লক্ষ্য ও স্বপ্ন</a>
+      <a href="#policy">আর্থিক নীতি</a><a href="#members">সদস্যবৃন্দ</a>
+      <a href="#management">ব্যবস্থাপনা</a><a href="#join">যোগদান</a><a href="#contact">যোগাযোগ</a>
     </div>
   </div>
-</section>
 
-<!-- ================= ABOUT ================= -->
-<section class="about" id="about">
-  <h2>আমাদের সম্পর্কে</h2>
-  <p><strong>Serve Society (SS)</strong> একটি স্বেচ্ছাসেবী সংগঠন, যেখানে তরুণ সমাজের কল্যাণে একসাথে কাজ করে। আমাদের লক্ষ্য—একটি এলাকার মানুষের জীবনযাত্রা সুন্দর করা, পারিবারিক বন্ধন দৃঢ় করা এবং সমাজকে অন্যায় ও অনৈতিক কাজ থেকে দূরে রাখা।</p>
-  <p>আমরা বিশ্বাস করি, একটি সমাজ তখনই উন্নত হয় যখন মানুষ একে অপরের পাশে দাঁড়ায়। তাই আমরা শুধু সাহায্যের মধ্যেই সীমাবদ্ধ নই—আমরা চাই মানুষের চিন্তাভাবনায় পরিবর্তন আসুক, যুবসমাজ যেন খারাপ পথে না যায়, এবং মসজিদগুলোতে যেন মানুষ সুন্দর ও শান্তভাবে ইবাদত করতে পারে।</p>
-  <p>Serve Society প্রতিটি এলাকায় নজর রাখার চেষ্টা করে— কোথাও কেউ কষ্টে আছে কিনা, কোথাও কোন পরিবার সমস্যায় আছে কিনা, কিংবা কোথাও সমাজে বিশৃঙ্খলা তৈরি হচ্ছে কিনা। আমাদের স্বপ্ন—একটি আদর্শ সমাজ গড়ে তোলা।</p>
-</section>
-
-<!-- ================= ACTIVITIES ================= -->
-<section class="activities" id="activities">
-  <h2>আমাদের কার্যক্রম</h2>
-  <div class="activity-grid">
-    <div class="activity-card">
-      <i data-lucide="hand-heart"></i>
-      <h3>অসহায় ও দরিদ্রদের সহায়তা</h3>
-      <p>দরিদ্র ও বিপদগ্রস্ত মানুষের পাশে দাঁড়ানো, আর্থিক সহায়তা ও খাবার বিতরণ করা হয়।</p>
-    </div>
-    <div class="activity-card">
-      <i data-lucide="utensils"></i>
-      <h3>খাবার বিতরণ কার্যক্রম</h3>
-      <p>গরিব ও কর্মহীন মানুষের জন্য নিয়মিত খাবার বিতরণ নিশ্চিত করা হয়।</p>
-    </div>
-    <div class="activity-card">
-      <i data-lucide="book-open"></i>
-      <h3>শিক্ষা ও সচেতনতা</h3>
-      <p>শিশুদের শিক্ষা উপকরণ প্রদান, নৈতিক শিক্ষা ও সচেতনতামূলক আলোচনা।</p>
-    </div>
-    <div class="activity-card">
-      <i data-lucide="mosque"></i>
-      <h3>মসজিদ ও ধর্মীয় পরিবেশ রক্ষা</h3>
-      <p>মসজিদ ও ইবাদতের পরিবেশ সুন্দর রাখা, শান্তিপূর্ণ ইবাদত নিশ্চিত করা।</p>
-    </div>
-    <div class="activity-card">
-      <i data-lucide="users"></i>
-      <h3>সমাজ ও পরিবার উন্নয়ন</h3>
-      <p>পরিবারভিত্তিক সমস্যা সমাধান, সামাজিক দ্বন্দ্ব নিরসন এবং শান্তি বজায় রাখা।</p>
+  <!-- হিরো সেকশন -->
+  <div class="hero" id="home">
+    <h1>Serve Society</h1>
+    <p>সমাজের জন্য, মানুষের পাশে — ছোট ছোট উদ্যোগে বড় পরিবর্তন</p>
+    <div class="btn-group">
+      <a href="#about" class="btn">আমাদের সম্পর্কে</a>
+      <a href="#join" class="btn btn-outline">যোগদান করুন</a>
     </div>
   </div>
-</section>
 
-<!-- ================= MEMBERS ================= -->
-<section class="members" id="members">
-  <h2>আমাদের সদস্যবৃন্দ</h2>
-  <p class="member-note">বর্তমানে আমাদের ১০+ জন সক্রিয় সদস্য রয়েছে।</p>
-  <div class="member-search">
-  <input type="text" id="memberSearch" placeholder="🔍 সদস্যের নাম লিখুন...">
-</div>
+  <div class="container">
+    <!-- ===== আমাদের সম্পর্কে ===== -->
+    <section id="about">
+      <h2>📖 আমাদের পরিচিতি</h2>
+      <div class="card">
+        <p><strong>Serve Society</strong> একটি স্বেচ্ছাসেবী সংগঠন, যেখানে তরুণ সমাজের কল্যাণে একসাথে কাজ করে। আমাদের লক্ষ্য—একটি এলাকার মানুষের জীবনযাত্রা সুন্দর করা, পারিবারিক বন্ধন দৃঢ় করা এবং সমাজকে অন্যায় ও অনৈতিক কাজ থেকে দূরে রাখা। <br>
+        আমরা বিশ্বাস করি, একটি সমাজ তখনই উন্নত হয় যখন মানুষ একে অপরের পাশে দাঁড়ায়। তাই আমরা শুধু সাহায্যের মধ্যেই সীমাবদ্ধ নই—আমরা চাই মানুষের চিন্তাভাবনায় পরিবর্তন আসুক, যুবসমাজ যেন খারাপ পথে না যায়, এবং মসজিদগুলোতে যেন মানুষ সুন্দর ও শান্তভাবে ইবাদত করতে পারে।</p> <br> <br>
+        <p><strong>আমাদের উদ্দেশ্য —</strong> ছোট ছোট উদ্যোগের মাধ্যমে সমাজে ইতিবাচক পরিবর্তন আনা এবং একে অপরের পাশে দাঁড়ানো।</p><br>
+        <p><strong>আমরা বিশ্বাস করি —</strong> ঐক্য, স্বচ্ছতা এবং দায়িত্বশীলতার মাধ্যমেই একটি সুন্দর সমাজ গড়ে তোলা সম্ভব।</p>
+      </div>
+    </section>
 
-  <div class="member-grid">
-    <!-- Example member cards -->
-    <div class="member-card">
-      <div class="member-img"><img src="./images/tamim.jpeg" alt=""></div>
-      <span>Member Name</span>
-      <h4>Tamim</h4>
-      <div class="member-social">
-        <a href="https://www.facebook.com/md.tamim.595615"><i data-lucide="facebook"></i></a>
-        <a href="#"><i data-lucide="phone"></i></a>
+    <!-- ===== লক্ষ্য ও স্বপ্ন ===== -->
+    <section id="mission">
+      <h2>🎯 আমাদের লক্ষ্য ও স্বপ্ন</h2>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+          <h3>আমাদের লক্ষ্য (Mission)</h3>
+          <ul style="list-style: none; padding-left: 0;">
+            <li><i class="fas fa-check-circle"></i> সমাজকল্যাণমূলক কার্যক্রম পরিচালনা</li>
+            <li><i class="fas fa-check-circle"></i> অসহায় ও প্রয়োজনে মানুষের পাশে দাঁড়ানো</li>
+            <li><i class="fas fa-check-circle"></i> নিয়মিত আলোচনা ও পরিকল্পনার মাধ্যমে এলাকার উন্নয়ন</li>
+            <li><i class="fas fa-check-circle"></i> সদস্যদের মধ্যে ভ্রাতৃত্ব ও ঐক্য বজায় রাখা</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-globe"></i></div>
+          <h3>আমাদের স্বপ্ন (Vision)</h3>
+          <p>একটি দায়িত্বশীল, ঐক্যবদ্ধ এবং সহযোগিতামূলক সমাজ গড়ে তোলা — যেখানে সবাই নিজের সামর্থ্য অনুযায়ী অবদান রাখবে এবং প্রয়োজনে একে অপরের পাশে দাঁড়াবে।</p>
+        </div>
       </div>
-    </div>
-    <div class="member-card">
-      <div class="member-img"><img src="./images/sorif.jpeg" alt=""></div>
-      <span>Member Name</span>
-      <h4>Shoriful</h4>
-      <div class="member-social">
-        <a href="https://www.facebook.com/bm.shoriful.islam.882844"><i data-lucide="facebook"></i></a>
-        <a href="#"><i data-lucide="phone"></i></a>
-      </div>
-    </div>
-    <div class="member-card">
-      <div class="member-img"><img src="./images/emon.jpeg" alt=""></div>
-      <span>Member Name</span>
-      <h4>Emon</h4>
-      <div class="member-social">
-        <a href="https://www.facebook.com/rjemon.khan.77985"><i data-lucide="facebook"></i></a>
-        <a href="#"><i data-lucide="phone"></i></a>
-      </div>
-    </div>
-    <div class="member-card">
-      <div class="member-img"><img src="./images/sabbir.jpeg" alt=""></div>
-      <span>Member Name</span>
-      <h4>Sabbir</h4>
-      <div class="member-social">
-        <a href="https://www.facebook.com/md.arnob.ahamed.2025"><i data-lucide="facebook"></i></a>
-        <a href="#"><i data-lucide="phone"></i></a>
-      </div>
-    </div>
-    <div class="member-card">
-      <div class="member-img"><img src="./images/asik.jpeg" alt=""></div>
-      <span>Member Name</span>
-      <h4>Ashik</h4>
-      <div class="member-social">
-        <a href="https://www.facebook.com/ashik.hossen.182"><i data-lucide="facebook"></i></a>
-        <a href="#"><i data-lucide="phone"></i></a>
-      </div>
-    </div>
-    <div class="member-card">
-      <div class="member-img"><img src="./images/bayzid.jpeg" alt=""></div>
-      <span>Member Name</span>
-      <h4>Bayzid</h4>
-      <div class="member-social">
-        <a href="https://www.facebook.com/bm.bayzid.48427"><i data-lucide="facebook"></i></a>
-        <a href="#"><i data-lucide="phone"></i></a>
-      </div>
-    </div>
-    <div class="member-card">
-      <div class="member-img"><img src="./images/asif.jpeg" alt=""></div>
-      <span>Member Name</span>
-      <h4>Asif</h4>
-      <div class="member-social">
-        <a href="https://www.facebook.com/bm.abdullah.asif"><i data-lucide="facebook"></i></a>
-        <a href="#"><i data-lucide="phone"></i></a>
-      </div>
-    </div>
-    <div class="member-card">
-      <div class="member-img"><img src="./images/samim.jpeg" alt=""></div>
-      <span>Member Name</span>
-      <h4>Shamim</h4>
-      <div class="member-social">
-        <a href="https://www.facebook.com/bm.shamim.618647"><i data-lucide="facebook"></i></a>
-        <a href="#"><i data-lucide="phone"></i></a>
-      </div>
-    </div>
-    <div class="member-card">
-      <div class="member-img"><img src="./images/imran.jpeg" alt=""></div>
-      <span>Member Name</span>
-      <h4>Imran</h4>
-      <div class="member-social">
-        <a href="https://www.facebook.com/imran.hossain.652680"><i data-lucide="facebook"></i></a>
-        <a href="#"><i data-lucide="phone"></i></a>
-      </div>
-    </div>
-    <div class="member-card">
-      <div class="member-img"><img src="./images/sayful.jpeg" alt=""></div>
-      <span>Member Name</span>
-      <h4>Sayful</h4>
-      <div class="member-social">
-        <a href="https://www.facebook.com/b.msayful.islam.hridoy"><i data-lucide="facebook"></i></a>
-        <a href="#"><i data-lucide="phone"></i></a>
-      </div>
-    </div>
-    <div class="member-card">
-      <div class="member-img"><img src="./images/arif.jpeg" alt=""></div>
-      <span>Member Name</span>
-      <h4>Arif</h4>
-      <div class="member-social">
-        <a href="https://www.facebook.com/bm.arif.370"><i data-lucide="facebook"></i></a>
-        <a href="#"><i data-lucide="phone"></i></a>
-      </div>
-    </div>
-    <div class="member-card">
-      <div class="member-img"><img src="./images/babu.jpeg" alt=""></div>
-      <span>Member Name</span>
-      <h4>Babu</h4>
-      <div class="member-social">
-        <a href="https://www.facebook.com/ashraful.islam.576998"><i data-lucide="facebook"></i></a>
-        <a href="#"><i data-lucide="phone"></i></a>
-      </div>
-    </div>
-    <div class="member-card new-member">
-  <span class="badge-new">NEW</span>
+    </section>
 
-  <div class="member-img">
-    <img src="./images/rofiq.jpeg" alt="">
+    <!-- ===== আর্থিক নীতি ===== -->
+    <section id="policy">
+      <h2>💰 আর্থিক নীতি</h2>
+      <div class="card">
+        <p style="font-weight:600;">Serve Society স্বচ্ছ ও সুশৃঙ্খল আর্থিক ব্যবস্থাপনায় বিশ্বাস করে।</p>
+        <div style="margin:20px 0;">
+          <h3><i class="fas fa-hand-holding-heart"></i> মাসিক সহযোগিতা</h3>
+          <ul>
+            <li>এটি বাধ্যতামূলক চাঁদা নয়। যার যেমন সামর্থ্য, সে ততটুকু সহযোগিতা করবে।</li>
+            <li>প্রত্যেকে তার নিজ নিজ সামর্থ্য অনুযায়ী স্বেচ্ছায় সহযোগিতা করবে—এইটাই আমাদের মূল নীতি।</li>
+            <li>দেশে বা প্রবাসে যেখানেই থাকি না কেন, সবার আন্তরিক অংশগ্রহণই আমাদের শক্তি।</li>
+            <li><strong>🗓️ জমা সময়:</strong> প্রতি মাসের ১–২০ তারিখ।</li>
+          </ul>
+        </div>
+        <div>
+          <h3><i class="fas fa-box-open"></i> বিশেষ প্রোগ্রাম ভিত্তিক সংগ্রহ</h3>
+          <p>রমজান, শীতবস্ত্র, চিকিৎসা সহায়তা ইত্যাদি আয়োজনের ক্ষেত্রে আলাদা সংগ্রহ করা হতে পারে। প্রয়োজনে সদস্যদের বাইরে থেকেও শুভাকাঙ্ক্ষীদের সহযোগিতা গ্রহণ করা যেতে পারে।</p>
+        </div>
+        <div style="margin-top:20px;">
+          <h3><i class="fas fa-chart-line"></i> হিসাব ও স্বচ্ছতা নীতি</h3>
+          <ul>
+            <li>প্রতি মাসে সংগ্রহ ও ব্যয়ের হিসাব উপস্থাপন করা হবে।</li>
+            <li>দায়িত্ব বণ্টন পরিষ্কারভাবে নির্ধারিত থাকবে।</li>
+            <li>অর্থ ব্যবহারে সম্মিলিত সিদ্ধান্তকে গুরুত্ব দেওয়া হবে।</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== স্বয়ংক্রিয় সদস্যবৃন্দ সেকশন (স্ক্রল + সার্চ) ===== -->
+    <section class="member-section" id="members">
+      <h2>👥 আমাদের সদস্যবৃন্দ</h2>
+      <h3 id="a"> </h3>
+      <div class="member-search">
+        <input type="text" id="memberSearch" placeholder="🔍 সদস্যের নাম লিখুন...">
+      </div>
+      <div class="member-scroll" id="memberScroll">
+        <!-- ডায়নামিকভাবে JS দিয়ে লোড হবে -->
+      </div>
+    </section>
+
+    <!-- ===== ব্যবস্থাপনা ও হিসাব পদ্ধতি (সামাজিক যোগাযোগ সহ) ===== -->
+    <section id="management">
+      <h2>📊 ব্যবস্থাপনা ও হিসাব পদ্ধতি</h2>
+      <div class="card">
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-around; margin: 20px 0;">
+          <!-- আরিফ -->
+          <div style="text-align:center; background:var(--primary-light); padding:15px; border-radius:var(--radius-sm); flex:1;">
+            <i class="fas fa-user-tie" style="font-size:2rem;"></i>
+            <h4>আরিফ</h4>
+            <p>ম্যানেজমেন্ট (প্রেজেন্ট)</p>
+            <div style="margin-top: 10px;">
+              <a href="#" class="btn-sm" style="background:#1877f2; color:white; padding:5px 10px; border-radius:30px; display:inline-block; margin:0 3px;"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://wa.me/8801938467991?text=আসসালামু আলাইকুম, আমি Serve Society-এর ওয়েবসাইট থেকে যোগাযোগ করছি।" class="btn-sm" style="background:#25D366; color:white; padding:5px 10px; border-radius:30px; display:inline-block;"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+          <!-- আসিক -->
+          <div style="text-align:center; background:var(--primary-light); padding:15px; border-radius:var(--radius-sm); flex:1;">
+            <i class="fas fa-calculator" style="font-size:2rem;"></i>
+            <h4>আসিক</h4>
+            <p>হিসাব রক্ষক</p>
+            <div style="margin-top: 10px;">
+              <a href="#" class="btn-sm" style="background:#1877f2; color:white; padding:5px 10px; border-radius:30px; display:inline-block; margin:0 3px;"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://wa.me/8801933005584?text=আসসালামু আলাইকুম, আমি Serve Society-এর ওয়েবসাইট থেকে আর্থিক বিষয়ে যোগাযোগ করছি।" class="btn-sm" style="background:#25D366; color:white; padding:5px 10px; border-radius:30px; display:inline-block;"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+          <!-- শরিফ -->
+          <div style="text-align:center; background:var(--primary-light); padding:15px; border-radius:var(--radius-sm); flex:1;">
+            <i class="fas fa-piggy-bank" style="font-size:2rem;"></i>
+            <h4>শরিফ</h4>
+            <p>মোট জমা রক্ষক</p>
+            <div style="margin-top: 10px;">
+              <a href="#" class="btn-sm" style="background:#1877f2; color:white; padding:5px 10px; border-radius:30px; display:inline-block; margin:0 3px;"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://wa.me/8801961847240?text=আসসালামু আলাইকুম, আমি Serve Society-এর ওয়েবসাইট থেকে যোগাযোগ করছি।" class="btn-sm" style="background:#25D366; color:white; padding:5px 10px; border-radius:30px; display:inline-block;"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+        </div>
+        <h3>💵 টাকা সংগ্রহ ও সংরক্ষণ প্রক্রিয়া</h3>
+        <ol>
+          <li><strong>১–২০ তারিখ:</strong> হিসাব রক্ষক মাসিক সংগ্রহ সম্পন্ন করবেন।</li>
+          <li><strong>২১–২৩ তারিখ:</strong> মোট সংগ্রহকৃত অর্থ জমা রক্ষকের কাছে হস্তান্তর করা হবে।</li>
+          <li><strong>২৩–২৫ তারিখ:</strong> ম্যানেজমেন্টের অনুমতি অনুযায়ী প্রয়োজনে নির্ধারিত একাউন্টে টাকা স্থানান্তর করা হবে।</li>
+        </ol>
+        <p>প্রতি মাসে সংগ্রহ ও ব্যয়ের হিসাব গ্রুপে উপস্থাপন করা হবে।</p>
+        <h3>📲 টাকা পাঠানোর মাধ্যম</h3>
+        <p style="background:var(--primary-light); padding:12px; border-radius:var(--radius-sm); display:inline-block;"><i class="fas fa-phone-alt"></i> <strong>বিকাশ নাম্বার:</strong> 01933005584 (আসিক)</p>
+      </div>
+    </section>
+
+    <!-- ===== যুক্ত হওয়ার ফর্ম (WhatsApp এ পাঠাবে) ===== -->
+    <section id="join">
+      <h2>🤝 আমাদের সাথে যুক্ত হোন</h2>
+      <div class="form-container">
+        <form id="joinForm">
+          <div class="form-group">
+            <input type="text" id="name" placeholder="আপনার নাম *" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" id="phone" placeholder="মোবাইল নাম্বার *" required>
+          </div>
+          <div class="form-group">
+            <textarea id="reason" rows="3" placeholder="কেন যুক্ত হতে চান? (ঐচ্ছিক)" required></textarea>
+          </div>
+          <div class="terms-box">
+            <p><strong>অঙ্গীকার ও সম্মতি</strong></p>
+            <p>1️⃣ Serve Society (SS) একটি স্বেচ্ছাসেবী সামাজিক সংগঠন।<br>
+            2️⃣ আমি সংগঠনের নিয়ম, শৃঙ্খলা ও নৈতিকতা মেনে চলতে অঙ্গীকার করছি।<br>
+            3️⃣ ভবিষ্যতে সংগঠন ত্যাগ করলে কোনো ধরনের অধিকার বা দাবি করবো না।<br>
+            4️⃣ সংগঠনের সিদ্ধান্ত দায়িত্বশীল টিম কর্তৃক গৃহীত হবে।<br>
+            5️⃣ সংগঠনের ভাবমূর্তি ক্ষুণ্ণ হয় এমন কাজ থেকে বিরত থাকবো।</p>
+          </div>
+          <label class="checkbox">
+            <input type="checkbox" id="agree" required> আমি উপরোক্ত শর্তাবলীতে সম্মতি প্রদান করছি
+          </label>
+          <div id="formError" style="color: red; margin-bottom: 10px; display: none;"></div>
+          <button type="submit" class="btn" style="width:100%;">যোগদান করুন</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- যোগাযোগ -->
+    <section id="contact">
+      <h2>যোগাযোগ</h2>
+      <div class="card" style="text-align:center;">
+        <p>📞 01961847240</p>
+        <p>📧 servesociety@email.com</p>
+        <p>📍 দক্ষিণ কানাইপুর</p>
+      </div>
+    </section>
   </div>
 
-  <span>Member Name</span>
-  <h4>Rofiqul</h4>
+  <footer class="footer">
+    <p>© ২০২৬ Serve Society · ঐক্য, স্বচ্ছতা, দায়িত্বশীলতা</p>
+    <p>সমাজের জন্য, মানুষের পাশে</p>
+  </footer>
 
-  <div class="member-social">
-    <a href="https://www.facebook.com/profile.php?id=100095092821252"><i data-lucide="facebook"></i></a>
-    <a href="#"><i data-lucide="phone"></i></a>
-  </div>
-</div>
-
-  <div class="member-card new-member">
-  <span class="badge-new">NEW</span>
-
-  <div class="member-img">
-    <img src="./images/abid.jpeg" alt="">
-  </div>
-
-  <span>Member Name</span>
-  <h4>Abid</h4>
-
-  <div class="member-social">
-    <a href="https://www.facebook.com/profile.php?id=61585870340300"><i data-lucide="facebook"></i></a>
-    <a href="#"><i data-lucide="phone"></i></a>
-  </div>
-</div>
-
-
-  </div>
-</section>
-https://www.facebook.com/profile.php?id=61585870340300
-<section class="team-section" id="team">
-  <h2>দায়িত্বশীল টিম</h2>
-  <p class="team-subtitle">
-    Serve Society (SS)-এর গুরুত্বপূর্ণ দায়িত্বে থাকা প্রতিনিধিবৃন্দ।
-    প্রয়োজন অনুযায়ী সরাসরি যোগাযোগ করা যাবে।
-  </p>
-
-  <div class="team-grid">
-
-    <!-- প্রধান -->
-    <div class="team-card">
-      <div class="team-img">
-        <img src="images/arifm.jpeg" alt="প্রধান">
+  <!-- ========== মেম্বার ড্যাশবোর্ড (আলাদা প্যানেল) ========== -->
+  <div id="memberDashboard" class="dashboard-panel">
+    <div class="dashboard-container">
+      <div class="dashboard-header">
+        <h2><i class="fas fa-users"></i> সদস্য ড্যাশবোর্ড</h2>
+        <button class="btn" id="closeDashboard"><i class="fas fa-arrow-left"></i> মূল পেইজে ফিরুন</button>
       </div>
-      <h3>MD.Arif</h3>
-      <span>প্রধান / চূড়ান্ত সিদ্ধান্তকারী</span>
-      <a
-        href="https://wa.me/8801938467991?text=আসসালামু%20আলাইকুম,%20আমি%20Serve%20Society-এর%20ওয়েবসাইট%20থেকে%20যোগাযোগ%20করছি।%20একটি%20গুরুত্বপূর্ণ%20বিষয়ে%20কথা%20বলতে%20চাই।"
-        target="_blank"
-        class="btn"
-      >
-        WhatsApp এ যোগাযোগ
-      </a>
-    </div>
 
-    <!-- ক্যাশিয়ার -->
-    <div class="team-card">
-      <div class="team-img">
-        <img src="images/sorif.jpeg" alt="ক্যাশিয়ার">
+      <!-- ফাইন্যান্সিয়াল সামারি -->
+      <div class="stats-row">
+        <div class="stat-box"><strong>মাসিক টার্গেট</strong><br><span id="targetDisplay">0</span>৳</div>
+        <div class="stat-box"><strong>মোট সংগ্রহ</strong><br><span id="totalCollected">0</span>৳</div>
+        <div class="stat-box"><strong>মোট বাকি</strong><br><span id="totalDue">0</span>৳</div>
       </div>
-      <h3>MD.Shoriful</h3>
-      <span>ক্যাশিয়ার (আর্থিক দায়িত্ব)</span>
-      <a
-        href="https://wa.me/8801961847240?text=আসসালামু%20আলাইকুম,%20আমি%20Serve%20Society-এর%20ওয়েবসাইট%20থেকে%20আর্থিক%20বিষয়ে%20যোগাযোগ%20করছি।"
-        target="_blank"
-        class="btn"
-      >
-        WhatsApp এ যোগাযোগ
-      </a>
-    </div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill">0%</div></div>
 
-    <!-- টাকা কালেকশন -->
-    <div class="team-card">
-      <div class="team-img">
-        <img src="./images/babu1.jpeg" alt="টাকা কালেকশন">
-      </div>
-      <h3>MD.Ashrafull</h3>
-      <span>টাকা কালেকশন দায়িত্বে</span>
-      <a
-        href="https://wa.me/8801933005584?text=আসসালামু%20আলাইকুম,%20আমি%20Serve%20Society-এর%20ওয়েবসাইট%20থেকে%20দান%20বা%20কালেকশন%20বিষয়ে%20যোগাযোগ%20করছি।"
-        target="_blank"
-        class="btn"
-      >
-        WhatsApp এ যোগাযোগ
-      </a>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ================= JOIN FORM ================= -->
-<!-- ================= JOIN SECTION ================= -->
-<section class="join-section" id="join">
-  <h2>আমাদের সাথে যুক্ত হোন</h2>
-  <p>Serve Society (SS)-এর সাথে যুক্ত হতে নিচের ফর্মটি পূরণ করুন</p>
-
-  <form id="joinForm">
-
-    <input type="text" id="name" placeholder="আপনার নাম" required>
-    <input type="tel" id="phone" placeholder="মোবাইল নাম্বার" required>
-
-    <textarea id="reason" rows="4" placeholder="আপনি কেন Serve Society-এর সাথে যুক্ত হতে চান?" required></textarea>
-
-    <!-- Terms -->
-    <div class="terms-box">
-      <p><strong>অঙ্গীকার ও সম্মতি</strong></p>
-      <p>
-        1️⃣ Serve Society (SS) একটি স্বেচ্ছাসেবী সামাজিক সংগঠন।<br>
-        2️⃣ আমি সংগঠনের নিয়ম, শৃঙ্খলা ও নৈতিকতা মেনে চলতে অঙ্গীকার করছি।<br>
-        3️⃣ ভবিষ্যতে সংগঠন ত্যাগ করলে কোনো ধরনের অধিকার বা দাবি করবো না।<br>
-        4️⃣ সংগঠনের সিদ্ধান্ত দায়িত্বশীল টিম কর্তৃক গৃহীত হবে।<br>
-        5️⃣ সংগঠনের ভাবমূর্তি ক্ষুণ্ণ হয় এমন কাজ থেকে বিরত থাকবো।
-      </p>
-    </div>
-
-    <label class="checkbox">
-      <input type="checkbox" id="agree" required>
-      আমি উপরোক্ত শর্তাবলীতে সম্মতি প্রদান করছি
-    </label>
-
-    <button type="submit">Submit</button>
-  </form>
-</section>
-
-<!-- ================= THANK YOU MODAL ================= -->
-<div id="thankYouModal" class="modal">
-  <div class="modal-content">
-    <h3>ধন্যবাদ 🌱</h3>
-    <p>
-      আপনার তথ্য আমরা পেয়েছি।  
-      অল্প সময়ের মধ্যেই WhatsApp-এ আমাদের সাথে কথা শুরু হবে ইনশাআল্লাহ।
-    </p>
-    <button id="closeModal">ঠিক আছে</button>
-  </div>
-</div>
-
-<!-- ================= MEMBERS SECTION (PRIVATE) ================= -->
-<!-- ================= PRIVATE MEMBERS SECTION ================= -->
-<section id="membersSection" class="members-section">
-
-  <!-- Password Screen -->
-  <section id="membersSection" class="members-section">
-
-  <!-- 🔐 LOGIN SCREEN -->
-  <div id="passwordScreen" class="password-screen">
-    <h2>🔒 Members Only</h2>
-    <p>এই অংশটি শুধু সদস্যদের জন্য</p>
-
-    <input type="password" id="memberPassword" placeholder="পাসওয়ার্ড দিন">
-    <button id="unlockBtn">Login</button>
-
-    <p id="passError" class="error-text"></p>
-  </div>
-
-  <!-- 📊 DASHBOARD -->
-  <div id="dashboard" class="dashboard">
-
-    <h1>Serve Society – Members Dashboard</h1>
-
-    <!-- FUND SUMMARY -->
-    <div class="card">
-      <h3>💰 মাসিক ফান্ড সারাংশ</h3>
-
-      <div class="fund-box">
-        <div>🎯 Target: <strong>5,000৳</strong></div>
-        <div>💰 Collected: <strong id="totalCollected">0৳</strong></div>
-        <div>⏳ Due: <strong id="totalDue">0৳</strong></div>
-      </div>
-    </div>
-
-    <!-- MEMBERS TABLE -->
-    <div class="card">
-      <h3>👥 সদস্যদের স্ট্যাটাস</h3>
-
-      <div class="table-wrap">
+      <!-- সদস্যদের টেবিল (শুধু নাম, মাস, স্ট্যাটাস) -->
+      <h3>📋 সদস্যদের মাসিক অবস্থা</h3>
+      <div style="overflow-x:auto;">
         <table>
-          <thead>
-            <tr>
-              <th>নাম</th>
-              <th>মাস</th>
-              <th>স্ট্যাটাস</th>
-            </tr>
-          </thead>
-          <tbody id="membersTable">
-            <!-- JS থেকে load হবে -->
-          </tbody>
+          <thead><tr><th>নাম</th><th>মাস</th><th>স্ট্যাটাস</th></tr></thead>
+          <tbody id="membersTable"></tbody>
         </table>
       </div>
-    </div>
 
-    <!-- NOTICE -->
-    <div class="card">
-      <h3>📢 নোটিশ ও প্রোগ্রাম</h3>
-      <ul>
-        <li>🕌 মাসিক মিটিং – ....</li>
-        <li>🌙 রমজান ফান্ড প্ল্যানিং</li>
-        <li>📦 দান কার্যক্রম – সামনে</li>
-      </ul>
-    </div>
+      <!-- সামনের / পিছনের কার্যক্রম -->
+      <h3 id="work-plan">📅 কার্যক্রমের অগ্রগতি</h3>
+      <div class="card-grid" style="margin-top:0;">
+        <div class="card">
+          <h3><i class="fas fa-calendar-alt"></i> সামনের পরিকল্পনা</h3>
+          <ul>
+            <li>🕌 এলাকার মসজিদের উন্নয়নমূলক কাজ</li>
+            <li>📚 একটি গণপাঠাগার (লাইব্রেরী) স্থাপন</li>
+            <li>🏠 একজন গরীব মানুষের ঘর মেরামত করে দেওয়া</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-history"></i> সম্পন্ন কার্যক্রম</h3>
+          <ul>
+            <li>✅ রমজানের ইফতার বিতরণ সম্পূর্ণ (মার্চ ২০২৬) – ২০+ ব্যক্তি উপকৃত</li>
+            <li>⏳ সংগঠন যাত্রা শুরু (২ মাস আগে) – এখন পর্যন্ত ১২ জন সক্রিয় সদস্য +</li>
+            <li>আমরা দুই মাসের যাত্রায় প্রথম বড় উদ্যোগ হিসেবে ইফতার বিতরণ সফলভাবে শেষ করেছি। সামনে আরও বড় কাজের স্বপ্ন আমাদের।</li>
+          </ul>
+        </div>
+      </div>
 
+      <!-- নীতি ও নির্দেশিকা (ড্যাশবোর্ডের ভেতরে) -->
+      <h3>📜 নীতি ও নির্দেশিকা</h3>
+      <div class="card">
+        <ul>
+          <li>মাসিক সহযোগিতা: ১–২০ তারিখের মধ্যে জমা দিন।</li>
+          <li>বিশেষ প্রোগ্রামের জন্য আলাদা সংগ্রহ করা হয়।</li>
+          <li>প্রতি মাসের রিপোর্ট গ্রুপে শেয়ার করা হবে।</li>
+          <li>দায়িত্বশীল টিমের সাথে যোগাযোগের মাধ্যম উপরে দেওয়া আছে।</li>
+        </ul>
+      </div>
+
+      <!-- সচেতনতা বার্তা -->
+      <h3>💡 সদস্যদের জন্য সচেতনতা</h3>
+      <div class="card">
+        <p>✅ আপনার সময়মতো সহযোগিতা সংগঠনের কার্যক্রম সচল রাখতে সাহায্য করে।<br>
+        ✅ যেকোনো প্রয়োজনে দায়িত্বশীল টিমের সাথে সরাসরি যোগাযোগ করুন।<br>
+        ✅ মাসিক মিটিংয়ে অংশগ্রহণ করে মতামত দিন।</p>
+      </div>
+
+      <!-- মাসিক রিপোর্ট ডাউনলোড -->
+      <h3>📄 মাসিক রিপোর্ট ডাউনলোড</h3>
+      <div class="report-buttons">
+        <button class="btn" id="downloadPDFReport"><i class="fas fa-file-pdf"></i> জানুয়ারি ২০২৬ (PDF)</button>
+        <button class="btn btn-outline" id="downloadExcelReport"><i class="fas fa-file-excel"></i> জানুয়ারি ২০২৬ (Excel)</button>
+      </div>
+    </div>
   </div>
 
-</section>
-
-
-<!-- ================= CONTACT ================= -->
-<section class="contact" id="contact">
-  <h2>যোগাযোগ</h2>
-  <p>📞 ফোন: 01961847240</p>
-  <p>📧 ইমেইল: servesociety@email.com</p>
-  <p>📍 এলাকা: দক্ষিণ কানাইপুর</p>
-</section>
-
-
-
-
-<footer>
-  © 2026 Serve Society (SS) — Serving Humanity with Heart
-</footer>
 
 <script src="./js/main.js"></script>
 <script>lucide.createIcons();</script>
