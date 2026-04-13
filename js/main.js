@@ -129,18 +129,19 @@
     function loadDashboardData() {
       const members = [
         { name: "আরিফ", month: "জানুয়ারি ২০২৬", assigned: 500, paid: 500 },
-        { name: "আসিক", month: "জানুয়ারি ২০২৬", assigned: 500, paid: 1000 },
+        { name: "আসিক", month: "জানুয়ারি ২০২৬", assigned: 500, paid: 1100 },
         { name: "শরিফ", month: "জানুয়ারি ২০২৬", assigned: 300, paid: 300 },
-        { name: "ইমরান", month: "জানুয়ারি ২০২৬", assigned: 200, paid: 200 },
-        { name: "তামিম", month: "জানুয়ারি ২০২৬", assigned: 500, paid: 500 },
-        { name: "সাব্বির", month: "জানুয়ারি ২০২৬", assigned: 400, paid: 0 },
-        { name: "সাইফুল ", month: "জানুয়ারি ২০২৬", assigned: 400, paid: 0 },
-        { name: "আছিফ", month: "জানুয়ারি ২০২৬", assigned: 400, paid: 0 },
-        { name: "বায়জিদ ", month: "জানুয়ারি ২০২৬", assigned: 400, paid: 0 },
-        { name: "শামিম", month: "জানুয়ারি ২০২৬", assigned: 400, paid: 0 },
-        { name: "রিজভী ", month: "জানুয়ারি ২০২৬", assigned: 400, paid: 0 },
-        { name: "ইমন ", month: "জানুয়ারি ২০২৬", assigned: 400, paid: 0 },
-        { name: "রাশিদুল ", month: "জানুয়ারি ২০২৬", assigned: 400, paid: 0 },
+        { name: "ইমরান", month: "জানুয়ারি ২০২৬", assigned: 100, paid: 100 },
+        { name: "তামিম", month: "জানুয়ারি ২০২৬", assigned: 200, paid: 200 },
+        { name: "সাব্বির", month: "জানুয়ারি ২০২৬", assigned: 500, paid: 510 },
+        { name: "সাইফুল ", month: "জানুয়ারি ২০২৬", assigned: 500, paid: 510 },
+        { name: "আছিফ", month: "জানুয়ারি ২০২৬", assigned: 500, paid: 500 },
+        { name: "বায়জিদ ", month: "জানুয়ারি ২০২৬", assigned: 300, paid: 300 },
+        { name: "শামিম", month: "জানুয়ারি ২০২৬", assigned: 200, paid: 200 },
+        // { name: "রিজভী ", month: "জানুয়ারি ২০২৬", assigned: 100, paid: 0 },
+        { name: "ইমন ", month: "জানুয়ারি ২০২৬", assigned: 500, paid: 500 },
+        { name: "আসিক (বাবু) ", month: "জানুয়ারি ২০২৬", assigned: 200, paid: 200 },
+        // { name: "রাশিদুল ", month: "জানুয়ারি ২০২৬", assigned: 400, paid: 0 },
       ];
       let totalAssigned = 0, totalPaid = 0;
       let tableHtml = '';
